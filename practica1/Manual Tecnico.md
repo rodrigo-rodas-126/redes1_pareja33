@@ -20,3 +20,16 @@ AO2 | Area de Operaciones | 3 | 192.168.33.13 | 255.255.255.0 |
 AO3 | Area de Operaciones | 3 | 192.168.33.14 | 255.255.255.0 |
 GE1 | Gerencia | 3 | 192.168.33.15 | 255.255.255.0 |
 GE2 | Gerencia | 3 | 192.168.33.16 | 255.255.255.0 |
+
+
+##### 2 - Hardware a utilizar
+| Cant | Hardware | Modelo - Desc. | Precio aprox (Amazon) |
+|-----|---|---|---|
+1 u | Switch | NETGEAR gigabit 16 puertos |  360 UDS
+2 u | Switch | TP-LINK gigabit 8 puertos | 230 UDS
+112 m | Cable UTP RJ45 | Elite Cat6 | 155 UDS
+36 u | Conectores RJ45 | Platinum Cat6 | 45 UDS
+1 u | Crimper | Jonard UC-4569 | 42 UDS
+1 u | Tester | Klein RJ45 VDV526-100 | 30 UDS
+
+##### 2 - Configuración de las VPCs  

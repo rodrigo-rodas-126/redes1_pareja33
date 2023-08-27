@@ -33,3 +33,9 @@ GE2 | Gerencia | 3 | 192.168.33.16 | 255.255.255.0 |
 1 u | Tester | Klein RJ45 VDV526-100 | 30 UDS
 
 ##### 2 - Configuración de las VPCs  
+
+![Recepción nivel 1](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/R1.jpg)  
+
+![Atención al cliente nivel 2](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AC2.jpg)  
+
+![Área de operaciones nivel 3](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AO1.jpg)

@@ -34,8 +34,11 @@ GE2 | Gerencia | 3 | 192.168.33.16 | 255.255.255.0 |
 
 ##### 2 - Configuración de las VPCs  
 
-![Recepción nivel 1](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/R1.jpg)  
+**Recepción nivel 1**  
+<img src="https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/R1.jpg" alt="Recepción nivel 1" width="300"/>  
 
-![Atención al cliente nivel 2](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AC2.jpg)  
+**Atención al cliente nivel 2**  
+<img src="https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AC2.jpg" alt="Descripción de la imagen" width="300"/>  
 
-![Área de operaciones nivel 3](https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AO1.jpg)
+**Área de operaciones nivel 3**  
+<img src="https://github.com/rodrigo-rodas-126/redes1_pareja33/blob/main/practica1/assets/AO1.jpg" alt="Área de operaciones nivel 3" width="300"/>

@@ -1,0 +1,48 @@
+! Modo Configuracion
+enable
+configure terminal
+
+! hostname
+hostname ESW1
+
+! Creacion VLANS
+vlan 133
+name Administracion
+vlan 233
+name Control Academico
+vlan 333
+name Investigaciones
+vlan 433
+name Seguridad
+vlan 99
+name Nativa
+vlan 999
+name Blackhole
+
+! Configuracion VTP
+vtp version 2
+vtp mode server
+vtp domain pareja33
+vtp password usac
+
+! Configuraciones puertos en modo troncal y VLAN nativa
+interface range Ethernet 0/0-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+interface range Ethernet 1/0-2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+! Puerto sin utilizar
+interface e1/3
+switchport mode access
+switchport access vlan 999
+
+! Save
+end
+write

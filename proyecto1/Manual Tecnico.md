@@ -1,6 +1,6 @@
 #### MANUAL TECNICO - PROYECTO1 1
 
-##### 1 - Tabla Direcciones IP
+#### 1 - Tabla Direcciones IP
 
 | Nombre Dispositivo | Area | Direccion IP | Mascara SubRed (CIDR) | Puerta de Enlace Predeterminada
 |-----|---|---|---|---|
@@ -20,16 +20,157 @@
 |SEG1|Seguridad|172.16.37.10|/24|172.16.37.1|
 |SEG2|Seguridad|172.16.37.20|/24|172.16.37.1|
 
-##### 2 - Topologia Implementada
+#### 2 - Topologia Implementada
 
 <img src="./images/topologia.png" alt="Topologia" width="700"/>  
 
-##### 3 - Detalle Comandos Utilizados
+#
 
-###### - ESW1
+#### 3 - Detalle Comandos Utilizados
+#
 
-###### - SW5
+##### - ESW1
 
-###### - SW
+    ! Modo Configuracion
+    enable
+    configure terminal
+
+    ! hostname
+    hostname ESW1
+
+    ! Creacion VLANS
+    vlan 133
+    name Administracion
+    vlan 233
+    name Control Academico
+    vlan 333
+    name Investigaciones
+    vlan 433
+    name Seguridad
+    vlan 99
+    name Nativa
+    vlan 999
+    name Blackhole
+
+    ! Configuracion VTP
+    vtp version 2
+    vtp mode server
+    vtp domain pareja33
+    vtp password usac
+
+    ! Configuraciones puertos en modo troncal y VLAN nativa
+    interface range Ethernet 0/0-3
+    switchport trunk encapsulation dot1q
+    switchport mode trunk
+    switchport trunk native vlan 99
+    switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+    interface range Ethernet 1/0-2
+    switchport trunk encapsulation dot1q
+    switchport mode trunk
+    switchport trunk native vlan 99
+    switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+    ! Puerto sin utilizar
+    interface e1/3
+    switchport mode access
+    switchport access vlan 999
+
+    ! Save
+    end
+    write
+
+#
+
+##### - SW5
+
+    ! Modo Configuracion
+    enable
+    configure terminal
+
+    ! hostname
+    hostname SW5
+
+    ! Configuracion VTP
+    vtp version 2
+    vtp mode client
+    vtp domain pareja33
+    vtp password usac
+
+    ! Configuraciones puertos en modo troncal y VLAN nativa
+    interface range Ethernet 0/0-1
+    switchport trunk encapsulation dot1q
+    switchport mode trunk
+    switchport trunk native vlan 99
+    switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+    ! Configuracion primer acceso VLAN
+    interface e0/2
+    switchport mode access
+    switchport access vlan 433
+
+    ! Configuracion segundo acceso VLAN
+    interface e0/3
+    switchport mode access
+    switchport access vlan 233
+
+    ! Save
+    end
+    write
+
+#
+
+##### - SW
+
+    ! Modo Configuracion
+    enable
+    configure terminal
+
+    ! hostname
+    hostname SW
+
+    ! Configuracion VTP
+    vtp version 2
+    vtp mode client
+    vtp domain pareja33
+    vtp password usac
+
+    ! Configuraciones puertos en modo troncal y VLAN nativa
+    interface range Ethernet 0/0-1
+    switchport trunk encapsulation dot1q
+    switchport mode trunk
+    switchport trunk native vlan 99
+    switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+    ! Configuracion primer Server
+    interface e0/2
+    switchport mode access
+    switchport access vlan 133
+
+    ! Configuracion segundo Server
+    interface e0/3
+    switchport mode access
+    switchport access vlan 433
+
+    ! Configuracion tercer Server
+    interface e1/0
+    switchport mode access
+    switchport access vlan 233
+
+    ! Configuracion cuarto Server
+    interface e1/1
+    switchport mode access
+    switchport access vlan 333
+
+    ! Puerto sin utilizar
+    interface range Ethernet 1/2-3
+    switchport mode access
+    switchport access vlan 999
+
+    ! Save
+    end
+    write
+
+#
 
 ##### 4 -  Capturas Wireshark

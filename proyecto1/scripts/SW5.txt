@@ -1,0 +1,33 @@
+! Modo Configuracion
+enable
+configure terminal
+
+! hostname
+hostname SW5
+
+! Configuracion VTP
+vtp version 2
+vtp mode client
+vtp domain pareja33
+vtp password usac
+
+! Configuraciones puertos en modo troncal y VLAN nativa
+interface range Ethernet 0/0-1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 133,233,333,433,99,1002-1005
+
+! Configuracion primer acceso VLAN
+interface e0/2
+switchport mode access
+switchport access vlan 433
+
+! Configuracion segundo acceso VLAN
+interface e0/3
+switchport mode access
+switchport access vlan 233
+
+! Save
+end
+write

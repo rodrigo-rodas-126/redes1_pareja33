@@ -28,6 +28,11 @@ interface e0/3
 switchport mode access
 switchport access vlan 333
 
+! STP rapid
+configure terminal
+spanning-tree mode rapid-pvst
+spanning-tree vlan 99,133,233,333,433,1002-1005
+
 ! Save
 end
 write

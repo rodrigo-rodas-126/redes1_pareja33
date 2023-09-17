@@ -5,6 +5,20 @@ configure terminal
 ! hostname
 hostname ESW2
 
+! Duplicar VLANS
+vlan 133
+name Administracion
+vlan 233
+name Control Academico
+vlan 333
+name Investigaciones
+vlan 433
+name Seguridad
+vlan 99
+name Nativa
+vlan 999
+name Blackhole
+
 ! Configuracion VTP
 vtp version 2
 vtp mode transparent

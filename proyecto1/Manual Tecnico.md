@@ -76,6 +76,11 @@
     switchport mode access
     switchport access vlan 999
 
+    ! STP rapid RAIZ
+    configure terminal
+    spanning-tree mode rapid-pvst
+    spanning-tree vlan 99,133,233,333,433,1002-1005 root primary
+    
     ! Save
     end
     write
@@ -113,6 +118,11 @@
     interface e0/3
     switchport mode access
     switchport access vlan 233
+
+    ! STP rapid
+    configure terminal
+    spanning-tree mode rapid-pvst
+    spanning-tree vlan 99,133,233,333,433,1002-1005
 
     ! Save
     end
@@ -167,6 +177,11 @@
     switchport mode access
     switchport access vlan 999
 
+    ! STP rapid
+    configure terminal
+    spanning-tree mode rapid-pvst
+    spanning-tree vlan 99,133,233,333,433,1002-1005
+
     ! Save
     end
     write
@@ -174,3 +189,20 @@
 #
 
 ##### 4 -  Capturas Wireshark
+#
+
+##### - Administracion VLAN 133
+
+<img src="./images/v133.jpg" alt="VLAN 133" width="700"/>  
+
+##### - Control académico VLAN 233
+
+<img src="./images/v233.jpg" alt="VLAN 233" width="700"/> 
+
+##### - Centro de ingestigaciones VLAN 333
+
+<img src="./images/v333.jpg" alt="VLAN 333" width="700"/> 
+
+##### - Seguridad VLAN 433
+
+<img src="./images/v433.jpg" alt="VLAN 433" width="700"/> 

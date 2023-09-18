@@ -77,7 +77,6 @@
     switchport access vlan 999
 
     ! STP rapid RAIZ
-    configure terminal
     spanning-tree mode rapid-pvst
     spanning-tree vlan 99,133,233,333,433,1002-1005 root primary
     
@@ -120,7 +119,6 @@
     switchport access vlan 233
 
     ! STP rapid
-    configure terminal
     spanning-tree mode rapid-pvst
     spanning-tree vlan 99,133,233,333,433,1002-1005
 
@@ -178,7 +176,6 @@
     switchport access vlan 999
 
     ! STP rapid
-    configure terminal
     spanning-tree mode rapid-pvst
     spanning-tree vlan 99,133,233,333,433,1002-1005
 

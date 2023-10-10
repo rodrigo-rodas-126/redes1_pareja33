@@ -1,0 +1,16 @@
+configure terminal
+
+!Configuracion interfaz serial
+interface s1/0
+ip address 10.0.0.1 255.255.255.252
+no shutdown
+
+!Configuracion primera interfaz
+interface e0/0
+ip address 133.168.1.2 255.255.255.248
+no shutdown
+
+!Configuracion segunda interfaz
+interface e0/1
+ip address 133.168.2.2 255.255.255.248
+no shutdown

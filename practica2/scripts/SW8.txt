@@ -1,0 +1,16 @@
+! Modo Configuracion
+enable
+configure terminal
+
+! Creacion Etherchanel
+interface Port-channel 1
+exit
+
+! Configuracion Interfaces
+interface range e0/0-1
+
+! Configuracion Etherchanel LACP
+channel-group 1 mode active
+
+exit
+do write

@@ -1,4 +1,7 @@
+enable
 configure terminal
+
+hostname Central
 
 !Configuracion interfaz serial
 interface s1/0
@@ -14,3 +17,21 @@ no shutdown
 interface e0/1
 ip address 133.168.2.2 255.255.255.248
 no shutdown
+
+exit
+
+!Configuracion rutas estáticas
+
+! Hacia 133.168.0.0
+ip route 133.168.0.0 255.255.255.0 133.168.1.1
+
+! Hacia 133.178.1.0
+ip route 133.178.1.0 255.255.255.248 10.0.0.2
+
+! Hacia 133.178.2.0
+ip route 133.178.2.0 255.255.255.248 10.0.0.2
+
+! Hacia 133.178.0.0
+ip route 133.178.0.0 255.255.255.248 10.0.0.2
+
+do write

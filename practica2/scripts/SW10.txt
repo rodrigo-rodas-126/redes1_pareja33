@@ -2,9 +2,10 @@
 enable
 configure terminal
 
+hostname SW10
+
 ! Creacion Etherchanel
 interface Port-channel 2
-exit
 
 ! Configuracion Interfaces
 interface range e0/0-1
@@ -14,3 +15,6 @@ channel-group 2 mode auto
 
 exit
 do write
+
+do show etherchannel summary
+do show pagp neighbor

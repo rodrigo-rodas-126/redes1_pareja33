@@ -1,22 +1,20 @@
 enable
 configure terminal
 
-hostname R2
+hostname R3
 
 !Configuracion interfaz enlace
 interface e0/0
-ip address 133.168.1.1 255.255.255.248
+ip address 133.168.2.1 255.255.255.248
 no shutdown
 
 !Configuracion primera interfaz
 interface e0/1
-ip address 133.168.0.2 255.255.255.0
+ip address 133.168.0.3 255.255.255.0
 no shutdown
 
 !Configuracion GLBP
 glbp 7 ip 133.168.0.1
-glbp 7 preempt
-glbp 7 priority 150
 glbp 7 load-balancing round-robin
 
 exit
@@ -24,19 +22,19 @@ exit
 !Configuracion rutas estáticas
 
 ! Hacia 10.0.0.0
-ip route 10.0.0.0 255.255.255.252 133.168.1.2
+ip route 10.0.0.0 255.255.255.252 133.168.2.2
 
-! Hacia 133.168.2.0
-ip route 133.168.2.0 255.255.255.248 133.168.1.2
+! Hacia 133.168.1.0
+ip route 133.168.1.0 255.255.255.248 133.168.0.2
 
 ! Hacia 133.178.1.0
-ip route 133.178.1.0 255.255.255.248 133.168.1.2
+ip route 133.178.1.0 255.255.255.248 133.168.2.2
 
 ! Hacia 133.178.2.0
-ip route 133.178.2.0 255.255.255.248 133.168.1.2
+ip route 133.178.2.0 255.255.255.248 133.168.2.2
 
 ! Hacia 133.178.0.0
-ip route 133.178.0.0 255.255.255.0 133.168.1.2
+ip route 133.178.0.0 255.255.255.0 133.168.2.2
 
 do write
 

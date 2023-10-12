@@ -2,15 +2,17 @@
 enable
 configure terminal
 
-! Creacion Etherchanel
-interface Port-channel 1
-exit
+hostname SW8
 
 ! Configuracion Interfaces
-interface range e0/0-1
+interface range e0/2-3
 
 ! Configuracion Etherchanel LACP
-channel-group 1 mode active
+channel-group 1 mode passive
 
 exit
+
 do write
+
+do show etherchannel summary
+do show lacp neighbor

@@ -1,0 +1,42 @@
+enable
+configure terminal
+
+hostname R6
+
+!Configuracion interfaz enlace
+interface e0/0
+ip address 133.178.2.1 255.255.255.248
+no shutdown
+
+!Configuracion primera interfaz
+interface e0/1
+ip address 133.178.0.3 255.255.255.0
+no shutdown
+
+!Configuracion HSRP
+standby version 2
+standby 21 ip 133.178.0.1
+
+exit
+
+!Configuracion rutas estáticas
+
+! Hacia 10.0.0.0
+ip route 10.0.0.0 255.255.255.252 133.178.2.2
+
+! Hacia 133.178.1.0
+ip route 133.178.1.0 255.255.255.248 133.178.0.2
+
+! Hacia 133.168.1.0
+ip route 133.168.1.0 255.255.255.248 133.178.2.2
+
+! Hacia 133.168.2.0
+ip route 133.168.2.0 255.255.255.248 133.178.2.2
+
+! Hacia 133.168.0.0
+ip route 133.168.0.0 255.255.255.0 133.178.2.2
+
+do write
+
+do show standby
+do show standby brief

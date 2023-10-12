@@ -2,11 +2,16 @@
 enable
 configure terminal
 
+hostname SW9
+
 ! Configuracion Interfaces
 interface range e0/2-3
 
 ! Configuracion Etherchanel PAGP
-channel-group 2 mode auto
+channel-group 2 mode desirable
 
 exit
 do write
+
+do show etherchannel summary
+do show pagp neighbor

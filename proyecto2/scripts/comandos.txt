@@ -1,0 +1,164 @@
+// SWC
+
+vlan 13
+name Academico 
+vlan 23
+name Investigacion
+vlan 33
+name Administracion
+vlan 43
+name Seguridad
+
+spanning-tree vlan 1,13,23,33,43,1002-1005 root primary
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,43,1002-1005
+
+interface Port-channel 2
+interface range e0/1-2
+channel-group 2 mode auto
+exit
+
+interface Port-channel 3
+interface e0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+channel-group 3 mode desirable
+exit
+
+interface e1/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+channel-group 3 mode desirable
+exit
+
+
+// SW1
+
+vtp version 2
+vtp domain redes1
+vtp password redes1
+vtp mode client
+interface range e0/2-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+interface range e1/0-1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface e0/0
+switchport mode access
+switchport access vlan 33
+exit
+interface e0/1
+switchport mode access
+switchport access vlan 13
+
+interface Port-channel 2
+interface e1/0
+channel-group 2 mode desirable
+exit
+interface e0/3
+channel-group 2 mode desirable
+exit
+interface Port-channel 1
+interface e1/1
+channel-group 1 mode auto
+exit
+interface e0/2
+channel-group 1 mode auto
+exit
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,43,1002-1005
+
+// SW2
+
+vtp version 2
+vtp domain redes1
+vtp password redes1
+vtp mode client
+interface range e0/0-1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+interface range e1/0-1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface e0/2
+switchport mode access
+switchport access vlan 23
+exit
+interface e0/3
+switchport mode access
+switchport access vlan 43
+exit
+
+interface Port-channel 3
+interface e1/1
+channel-group 3 mode auto
+exit
+interface e0/0
+channel-group 3 mode auto
+exit
+
+interface Port-channel 1
+interface e1/0
+channel-group 1 mode desirable
+exit
+interface e0/1
+channel-group 1 mode desirable
+exit
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,43,1002-1005
+
+// R
+
+ena
+conf ter
+hostname R
+int e0/0
+no shut
+exit
+int e0/0.13
+encapsulation dot1Q 13
+ip address 172.133.2.3 255.255.255.224
+exit
+int e0/0.23
+encapsulation dot1Q 23
+ip address 172.133.2.34 255.255.255.240
+exit
+int e0/0.33
+encapsulation dot1Q 33
+ip address 172.133.2.50 255.255.255.240
+exit
+int e0/0.43
+encapsulation dot1Q 43
+ip address 172.133.2.66 255.255.255.248
+exit
+do write
+
+// Academico
+
+ip 172.133.2.2/27 172.133.2.3
+save
+
+// Investigacion
+
+ip 172.133.2.33/28 172.133.2.34
+save
+
+// Administracion 
+
+ip 172.133.2.49/28 172.133.2.50
+save
+
+// Seguridad
+
+ip 172.133.2.65/29 172.133.2.66
+save

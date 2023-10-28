@@ -119,28 +119,33 @@ spanning-tree vlan 1,13,23,33,43,1002-1005
 
 // R
 
-ena
-conf ter
+enable
+configure terminal
 hostname R
-int e0/0
-no shut
+interface e0/0
+no shutdown
 exit
-int e0/0.13
+interface e0/0.13
 encapsulation dot1Q 13
 ip address 172.133.2.3 255.255.255.224
 exit
-int e0/0.23
+interface e0/0.23
 encapsulation dot1Q 23
 ip address 172.133.2.34 255.255.255.240
 exit
-int e0/0.33
+interface e0/0.33
 encapsulation dot1Q 33
 ip address 172.133.2.50 255.255.255.240
 exit
-int e0/0.43
+interface e0/0.43
 encapsulation dot1Q 43
 ip address 172.133.2.66 255.255.255.248
 exit
+
+interface e0/1
+ip address 172.133.0.4 255.255.255.248
+no shutdown
+
 do write
 
 // Academico
@@ -162,3 +167,30 @@ save
 
 ip 172.133.2.65/29 172.133.2.66
 save
+
+// C_1
+
+enable
+configure terminal
+hostname C_1
+
+interface e0/0
+ip address 172.133.0.2 255.255.255.248
+no shutdown
+
+standby version 2
+standby 21 ip 172.133.0.1
+standby 21 priority 109
+standby 21 preempt
+
+// C_2
+
+enable
+configure terminal
+hostname C_2
+
+interface e0/0
+ip address 172.133.0.3 255.255.255.248
+no shutdown
+standby version 2
+standby 21 ip 172.133.0.1

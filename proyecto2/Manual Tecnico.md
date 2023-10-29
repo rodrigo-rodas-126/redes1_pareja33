@@ -1,9 +1,10 @@
-#### MANUAL TECNICO - PROYECTO 2
+### MANUAL TECNICO - PROYECTO 2
 
 #### 1 - Tabla Direcciones IP
 
 | Dispositivo | Interfaz | IP | Mascara SubRed (CIDR) | Puerta de Enlace Predeterminada
 |---|---|---|---|---|
+|**Sede Central**|---|---|---|---|
 |Academico|eth0|172.133.2.2|/27|172.133.2.3
 |Investigacion|eth0|172.133.2.33|/28|172.133.2.34
 |Administracion|eth0|172.133.2.49|/28|172.133.2.50
@@ -17,10 +18,16 @@
 |C_2|e0/0|172.133.0.3|/29|
 |C_1 - C_2|Virtual|172.133.0.1|/29|
 |C_1|s1/0|9.0.0.1|/30|
-|C_2|s1/0|9.0.0.5|/30|
 |Central|s1/0|9.0.0.2|/30|
+|C_2|s1/0|9.0.0.5|/30|
 |Central|s1/1|9.0.0.6|/30|
-
+|**Core**|---|---|---|---|
+|Central|s1/2|10.0.0.1|/30|
+|Mixco|s1/0|10.0.0.2|/30|
+|Mixco|s1/1|10.0.0.5|/30|
+|Villa Nueva|s1/1|10.0.0.6|/30|
+|Villa Nueva|s1/0|10.0.0.9|/30|
+|Central|s1/3|10.0.0.10|/30|
 
 #
 
@@ -43,6 +50,13 @@
 |SubRedes|---|---|---|---|---|
 |9.0.0.0|2|255.255.255.252|9.0.0.1|9.0.0.2|9.0.0.3|
 |9.0.0.4|2|255.255.255.252|9.0.0.5|9.0.0.6|9.0.0.7|
+|---|---|---|---|---|---|
+|Red Base|---|---|---|---|---|
+|10.0.0.0|14|255.255.255.240|10.0.0.1|10.0.0.14|10.0.0.15
+|SubRedes|---|---|---|---|---|
+|10.0.0.0|255.255.255.252|10.0.0.1|10.0.0.2|10.0.0.3
+|10.0.0.4|255.255.255.252|10.0.0.5|10.0.0.6|10.0.0.7
+|10.0.0.8|255.255.255.252|10.0.0.9|10.0.0.10|10.0.0.11
 
 
 #
@@ -51,7 +65,7 @@
 
 ##### VLSM de Central
 
-1. Como primer paso con la informacion de las VLAN's se procedio a ordenarlas de mayo a menor numero de equipos
+1. Como primer paso con la informacion de las VLAN's se procedio a ordenarlas de mayor a menor numero de equipos
 
 |VLAN|ID|# Equipos
 |--|--|--|
@@ -61,8 +75,7 @@
 |Seguridad|43|4
 
 ||
-||
-V
+
 |VLAN|ID|# Equipos
 |--|--|--|
 |Academico|13|21
@@ -88,6 +101,17 @@ Investigacion|12|172.133.2.32|255.255.255.240|172.133.2.33|172.133.2.46|172.133.
 Administracion|9|172.133.2.48|255.255.255.240|172.133.2.49|172.133.2.62|172.133.2.63
 Seguridad|4|172.133.2.64|255.255.255.248|172.133.2.65|172.133.2.70|172.133.2.71
 
+#
+
+##### FLSM  de Core
+
+1. Como primer paso, con la red principal que se proporciona "10.0.0.0/28", se tomo como la primera subred, se definieron mascaras de subred para 2 equipos donde se siguio el mismo procedimiento para las 2 siguientes subredes utilizando la direccion de broadcast de la subred anterior mas uno para definir el nuevo id de red. En este procedimiento no se llevo un orden en especifico unicamente se armaron las subredes necesarias para cada conexion entre routers.
+
+Referencia|# Equipos|ID de red|Mascara de subred|Primer host|Ultimo Host|Broadcast
+|--|--|--|--|--|--|--|
+Central - Mixco|2|10.0.0.0|255.255.255.252|10.0.0.1|10.0.0.2|10.0.0.3
+Mixco - Villa Nueva|2|10.0.0.4|255.255.255.252|10.0.0.5|10.0.0.6|10.0.0.7
+Villa Nueva - Central|2|10.0.0.8|255.255.255.252|10.0.0.9|10.0.0.10|10.0.0.11
 
 
 #
@@ -102,7 +126,12 @@ Seguridad|4|172.133.2.64|255.255.255.248|172.133.2.65|172.133.2.70|172.133.2.71
 
 ##### Conexion Central
 
-![Central](./images/ConexionCentral.png)
+![ConexioCentral](./images/ConexionCentral.png)
 
 #
 
+##### Core
+
+![Core](./images/Core.png)
+
+#

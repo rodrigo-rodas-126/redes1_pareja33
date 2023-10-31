@@ -167,6 +167,17 @@ ip route 10.0.0.4 255.255.255.252 172.133.0.1
 ! Hacia 10.0.0.8
 ip route 10.0.0.8 255.255.255.252 172.133.0.1
 
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 172.133.0.1
+ip route 11.0.0.4 255.255.255.252 172.133.0.1
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 172.133.0.1
+ip route 173.133.2.0 255.255.255.224 172.133.0.1
+ip route 173.133.2.32 255.255.255.240 172.133.0.1
+ip route 173.133.2.48 255.255.255.240 172.133.0.1
+ip route 173.133.2.64 255.255.255.248 172.133.0.1
+
 do write
 
 ! ######################
@@ -240,6 +251,17 @@ ip route 10.0.0.4 255.255.255.252 9.0.0.2
 ! Hacia 10.0.0.8
 ip route 10.0.0.8 255.255.255.252 9.0.0.2
 
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 9.0.0.2
+ip route 11.0.0.4 255.255.255.252 9.0.0.2
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 9.0.0.2
+ip route 173.133.2.0 255.255.255.224 9.0.0.2
+ip route 173.133.2.32 255.255.255.240 9.0.0.2
+ip route 173.133.2.48 255.255.255.240 9.0.0.2
+ip route 173.133.2.64 255.255.255.248 9.0.0.2
+
 ! #################################
 
 
@@ -278,6 +300,17 @@ ip route 10.0.0.4 255.255.255.252 9.0.0.6
 ! Hacia 10.0.0.8
 ip route 10.0.0.8 255.255.255.252 9.0.0.6
 
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 9.0.0.6
+ip route 11.0.0.4 255.255.255.252 9.0.0.6
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 9.0.0.6
+ip route 173.133.2.0 255.255.255.224 9.0.0.6
+ip route 173.133.2.32 255.255.255.240 9.0.0.6
+ip route 173.133.2.48 255.255.255.240 9.0.0.6
+ip route 173.133.2.64 255.255.255.248 9.0.0.6
+
 ! #################################
 
 
@@ -292,13 +325,11 @@ hostname Central
 interface s1/0
 ip address 9.0.0.2 255.255.255.252
 no shutdown
-
 exit
 
 interface s1/1
 ip address 9.0.0.6 255.255.255.252
 no shutdown
-
 exit
 
 ! Core
@@ -333,6 +364,17 @@ ip route 172.133.2.64 255.255.255.248 9.0.0.5
 ip route 10.0.0.4 255.255.255.252 10.0.0.2
 ip route 10.0.0.4 255.255.255.252 10.0.0.9
 
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 10.0.0.9
+ip route 11.0.0.4 255.255.255.252 10.0.0.9
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 10.0.0.9
+ip route 173.133.2.0 255.255.255.224 10.0.0.9
+ip route 173.133.2.32 255.255.255.240 10.0.0.9
+ip route 173.133.2.48 255.255.255.240 10.0.0.9
+ip route 173.133.2.64 255.255.255.248 10.0.0.9
+
 ! #################################
 
 
@@ -360,7 +402,6 @@ ip route 10.0.0.8 255.255.255.252 10.0.0.1
 
 ! Hacia 9.0.0.0
 ip route 9.0.0.0 255.255.255.252 10.0.0.1
-
 ! Hacia 9.0.0.4
 ip route 9.0.0.4 255.255.255.252 10.0.0.1
 
@@ -372,6 +413,18 @@ ip route 172.133.2.0 255.255.255.224 10.0.0.1
 ip route 172.133.2.32 255.255.255.240 10.0.0.1
 ip route 172.133.2.48 255.255.255.240 10.0.0.1
 ip route 172.133.2.64 255.255.255.248 10.0.0.1
+
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 10.0.0.6
+ip route 11.0.0.4 255.255.255.252 10.0.0.6
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 10.0.0.6
+ip route 173.133.2.0 255.255.255.224 10.0.0.6
+ip route 173.133.2.32 255.255.255.240 10.0.0.6
+ip route 173.133.2.48 255.255.255.240 10.0.0.6
+ip route 173.133.2.64 255.255.255.248 10.0.0.6
+
 
 ! #################################
 
@@ -385,13 +438,22 @@ hostname VillaNueva
 interface s1/1
 ip address 10.0.0.6 255.255.255.252
 no shutdown
-
 exit
 
 interface s1/0
 ip address 10.0.0.9 255.255.255.252
 no shutdown
+exit
 
+
+interface s1/3
+ip address 11.0.0.2 255.255.255.252
+no shutdown
+exit
+
+interface s1/2
+ip address 11.0.0.6 255.255.255.252
+no shutdown
 exit
 
 ! Hacia 10.0.0.0
@@ -412,5 +474,327 @@ ip route 172.133.2.0 255.255.255.224 10.0.0.10
 ip route 172.133.2.32 255.255.255.240 10.0.0.10
 ip route 172.133.2.48 255.255.255.240 10.0.0.10
 ip route 172.133.2.64 255.255.255.248 10.0.0.10
+
+
+! Hacia 173.133.2.0
+ip route 173.133.2.0 255.255.255.224 11.0.0.1
+ip route 173.133.2.32 255.255.255.240 11.0.0.1
+ip route 173.133.2.48 255.255.255.240 11.0.0.1
+ip route 173.133.2.64 255.255.255.248 11.0.0.1
+
+ip route 173.133.2.0 255.255.255.224 11.0.0.5
+ip route 173.133.2.32 255.255.255.240 11.0.0.5
+ip route 173.133.2.48 255.255.255.240 11.0.0.5
+ip route 173.133.2.64 255.255.255.248 11.0.0.5
+
+! Hacia 173.133.0.0
+ip route 173.133.0.0 255.255.255.248 11.0.0.1
+ip route 173.133.0.0 255.255.255.248 11.0.0.5
+
+
+
+! #################################
+
+
+
+
+! ########### SWC ###########
+
+vlan 13
+name Administracion 
+vlan 23
+name Seguridad
+vlan 33
+name Academico
+vlan 53
+name Investigacion
+
+vtp version 2
+vtp domain REDES1
+vtp password REDES1
+vtp mode server
+
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,53,1002-1005 root primary
+
+interface Port-channel 2
+interface range e0/1-2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+channel-group 2 mode active
+exit
+
+interface Port-channel 3
+interface e0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+channel-group 3 mode passive
+exit
+
+interface e1/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+channel-group 3 mode passive
+exit
+
+
+interface e0/0
+no switchport
+ip address 173.133.0.4 255.255.255.248
+exit
+
+interface vlan 33
+ip address 173.133.2.1 255.255.255.224
+no shutdown
+exit
+
+interface vlan 23
+ip address 173.133.2.33 255.255.255.240
+no shutdown
+exit
+
+interface vlan 53
+ip address 173.133.2.49 255.255.255.240
+no shutdown
+exit
+
+interface vlan 13
+ip address 173.133.2.65 255.255.255.248
+no shutdown
+exit
+
+ip routing
+
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 173.133.0.1
+ip route 11.0.0.4 255.255.255.252 173.133.0.1
+
+
+ip route 172.133.0.0 255.255.255.248 173.133.0.1
+ip route 172.133.2.0 255.255.255.224 173.133.0.1
+ip route 172.133.2.32 255.255.255.240 173.133.0.1
+ip route 172.133.2.48 255.255.255.240 173.133.0.1
+ip route 172.133.2.64 255.255.255.248 173.133.0.1
+! Hacia 10.0.0.0
+ip route 10.0.0.0 255.255.255.252 173.133.0.1
+! Hacia 10.0.0.4
+ip route 10.0.0.4 255.255.255.252 173.133.0.1
+! Hacia 10.0.0.8
+ip route 10.0.0.8 255.255.255.252 173.133.0.1
+! Hacia 9.0.0.0
+ip route 9.0.0.0 255.255.255.252 173.133.0.1
+! Hacia 9.0.0.4
+ip route 9.0.0.4 255.255.255.252 173.133.0.1
+
+! #################################
+
+! ACA_1
+ip 173.133.2.2 255.255.255.224 173.133.2.1
+
+! SEGU_1
+ip 173.133.2.34 255.255.255.240 173.133.2.33
+
+! INVES_1
+ip 173.133.2.50 255.255.255.240 173.133.2.49
+
+! ADMIN_1
+ip 173.133.2.66 255.255.255.248 173.133.2.65
+
+
+! #################################
+
+vtp version 2
+vtp domain REDES1
+vtp password REDES1
+vtp mode client
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,53,1002-1005
+
+
+
+! ########### SW2 ###########
+
+vtp version 2
+vtp domain REDES1
+vtp password REDES1
+vtp mode client
+
+interface range e0/0-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface e1/0
+switchport mode access
+switchport access vlan 13
+exit
+
+interface e1/1
+switchport mode access
+switchport access vlan 33
+exit
+
+interface Port-channel 2
+interface e0/1
+channel-group 2 mode passive
+exit
+interface e0/0
+channel-group 2 mode passive
+exit
+
+interface Port-channel 1
+interface e0/2
+channel-group 1 mode active
+exit
+interface e0/3
+channel-group 1 mode active
+exit
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,53,1002-1005
+
+! #################################
+
+! ########### SW1 ###########
+
+vtp version 2
+vtp domain REDES1
+vtp password REDES1
+vtp mode client
+
+interface range e0/0-3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface e1/0
+switchport mode access
+switchport access vlan 53
+exit
+
+interface e1/1
+switchport mode access
+switchport access vlan 23
+exit
+
+interface Port-channel 3
+interface e0/3
+channel-group 3 mode active
+exit
+
+interface e0/2
+channel-group 3 mode active
+exit
+
+interface Port-channel 1
+interface e0/1
+channel-group 1 mode passive
+exit
+interface e0/0
+channel-group 1 mode passive
+exit
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,13,23,33,53,1002-1005
+
+! #################################
+
+
+! ########### VN_1 ###########
+
+
+interface s1/0
+ip address 11.0.0.1 255.255.255.252
+no shutdown
+exit
+
+interface e0/0
+ip address 173.133.0.2 255.255.255.248
+no shutdown
+
+!Configuracion GLBP
+glbp 7 ip 173.133.0.1
+glbp 7 preempt
+glbp 7 priority 150
+glbp 7 load-balancing round-robin
+
+exit
+
+
+! Hacia 173.133.2.0
+ip route 173.133.2.0 255.255.255.224 173.133.0.4
+ip route 173.133.2.32 255.255.255.240 173.133.0.4
+ip route 173.133.2.48 255.255.255.240 173.133.0.4
+ip route 173.133.2.64 255.255.255.248 173.133.0.4
+
+! Hacia 11.0.0.4
+ip route 11.0.0.4 255.255.255.252 11.0.0.2
+
+
+ip route 172.133.0.0 255.255.255.248 11.0.0.2
+ip route 172.133.2.0 255.255.255.224 11.0.0.2
+ip route 172.133.2.32 255.255.255.240 11.0.0.2
+ip route 172.133.2.48 255.255.255.240 11.0.0.2
+ip route 172.133.2.64 255.255.255.248 11.0.0.2
+! Hacia 10.0.0.0
+ip route 10.0.0.0 255.255.255.252 11.0.0.2
+! Hacia 10.0.0.4
+ip route 10.0.0.4 255.255.255.252 11.0.0.2
+! Hacia 10.0.0.8
+ip route 10.0.0.8 255.255.255.252 11.0.0.2
+! Hacia 9.0.0.0
+ip route 9.0.0.0 255.255.255.252 11.0.0.2
+! Hacia 9.0.0.4
+ip route 9.0.0.4 255.255.255.252 11.0.0.2
+
+
+! #################################
+
+
+! ########### VN_2 ###########
+
+interface s1/0
+ip address 11.0.0.5 255.255.255.252
+no shutdown
+exit
+
+interface e0/0
+ip address 173.133.0.3 255.255.255.248
+no shutdown
+
+!Configuracion GLBP
+glbp 7 ip 173.133.0.1
+glbp 7 load-balancing round-robin
+
+exit
+
+! Hacia 173.133.2.0
+ip route 173.133.2.0 255.255.255.224 173.133.0.4
+ip route 173.133.2.32 255.255.255.240 173.133.0.4
+ip route 173.133.2.48 255.255.255.240 173.133.0.4
+ip route 173.133.2.64 255.255.255.248 173.133.0.4
+
+! Hacia 11.0.0.0
+ip route 11.0.0.0 255.255.255.252 11.0.0.6
+
+
+ip route 172.133.0.0 255.255.255.248 11.0.0.6
+ip route 172.133.2.0 255.255.255.224 11.0.0.6
+ip route 172.133.2.32 255.255.255.240 11.0.0.6
+ip route 172.133.2.48 255.255.255.240 11.0.0.6
+ip route 172.133.2.64 255.255.255.248 11.0.0.6
+! Hacia 10.0.0.0
+ip route 10.0.0.0 255.255.255.252 11.0.0.6
+! Hacia 10.0.0.4
+ip route 10.0.0.4 255.255.255.252 11.0.0.6
+! Hacia 10.0.0.8
+ip route 10.0.0.8 255.255.255.252 11.0.0.6
+! Hacia 9.0.0.0
+ip route 9.0.0.0 255.255.255.252 11.0.0.6
+! Hacia 9.0.0.4
+ip route 9.0.0.4 255.255.255.252 11.0.0.6
 
 ! #################################
